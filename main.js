@@ -1,3 +1,7 @@
+leftWristX = 0;
+rightWristX = 0;
+difference = 0;
+
 function setup()
 {
     video = createCapture(VIDEO);
@@ -18,7 +22,7 @@ function draw()
     document.getElementById("font_size").innerHTML = "Width and height of the Font will be = " + difference +"px";
     fill('#F90093');
     stroke('#F90093');
-    text("Ritwik", noseX, noseY);
+    text("Ritwik", 50, 400);
     textSize(difference)
 }
 function gotPoses(results)
@@ -26,10 +30,7 @@ function gotPoses(results)
     if (results.length > 0)
     {
         console.log(results);
-        noseX = results[0].pose.nose.x;
-        noseY = results[0].pose.nose.y;
-        console.log("noseX = " + noseX + " noseY = " + noseY);
-
+        
         leftWristX = results[0].pose.leftWrist.x;
         rightWristX = results[0].pose.rightWrist.x;
         difference = floor(leftWristX - rightWristX);
